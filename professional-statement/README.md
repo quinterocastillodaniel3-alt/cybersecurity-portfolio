@@ -1,6 +1,3 @@
-# Professional Statement
+I am a Mechatronics Engineering student with a strong interest in cybersecurity, automation, embedded systems, and network technologies. I am committed to continuous learning, analytical problem-solving, and developing reliable technological solutions using tools such as Python, Linux, and embedded platforms.
 
-I am a Mechatronics Engineering student with a strong interest in cybersecurity, automation, and embedded systems. 
-I value continuous learning, analytical problem-solving, and the development of reliable technological solutions using tools such as Python and Linux.
-
-My goal is to contribute to the security and reliability of technological systems through monitoring, analysis, automation, and information protection practices while continuing to strengthen my technical and professional skills.
+My goal is to contribute to the security and reliability of technological systems by applying monitoring, analysis, automation, and information protection practices that support the operational and security objectives of organizations.
