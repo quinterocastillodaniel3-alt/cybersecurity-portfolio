@@ -25,3 +25,20 @@ The attacker sends thousands of SYN requests to the server but intentionally ign
 
 **Explain what the logs indicate and how that affects the server:**
 The logs show a relentless flood of SYN requests from `203.0.113.0`. Because the server is allocating memory and processing power to keep these half-open connections alive waiting for the final step of the handshake, its connection queue quickly fills up to maximum capacity. Once the queue is full, the server drops any new, legitimate connection requests (like those from the travel agency's employees), resulting in the "Connection Timeout" error.
+
+---
+
+## Evidence and Traffic Analysis
+
+### 1. Normal Traffic Pattern
+Before the incident, the logs show legitimate users successfully completing the TCP 3-way handshake (`SYN`, `SYN-ACK`, `ACK`) and requesting the sales webpage:
+
+![Normal Traffic Handshake](normal-traffic.png)
+
+### 2. Attack Traffic Pattern (SYN Flood)
+During the incident, the logs indicate a flood of `SYN` requests originating from the attacker's IP (`203.0.113.0`). The absence of `ACK` packets from this IP confirms the malicious intent to exhaust server resources:
+
+![SYN Flood Attack Activity](syn-flood-attack.png)
+
+### 📎 Attachments
+* [Download the full Wireshark TCP log (Excel)](HTTP-log.xlsx)
