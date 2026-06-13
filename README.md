@@ -1,37 +1,39 @@
-# Cybersecurity Portfolio
+# Hi there, I'm Daniel Quintero Castillo 👋
 
-Welcome to my cybersecurity portfolio.
+Welcome to my Cybersecurity Portfolio. 
 
-I am a Mechatronics Engineering student with interests in cybersecurity, Python, Linux, automation, embedded systems, and network analysis. This repository documents my learning process, labs, projects, technical notes, and security-related practices developed during my engineering and cybersecurity training.
+I am a tenth-semester Mechatronics Engineering student based in Medellín, Colombia. This repository documents my learning process, practical labs, incident responses, and security-related practices developed during my engineering and cybersecurity training. I blend my background in hardware prototyping and embedded systems with a strong focus on defending and analyzing networks.
 
-## Areas of Interest
-- Cybersecurity Fundamentals
-- Python for Security
-- Linux Administration
-- Network Analysis
-- Embedded Systems
-- Automation
-- Raspberry Pi Projects
+## 🎯 Professional Statement
 
-## Current Goals
-- Strengthen cybersecurity and networking skills
-- Develop security-focused Python tools
-- Build practical projects using Linux and embedded systems
-- Create a professional technical portfolio
+I value continuous learning, analytical problem-solving, and the development of reliable technological solutions using tools such as Python and Linux. My goal is to contribute to the security and reliability of technological systems through monitoring, risk analysis, and robust information protection practices.
 
-## Repository Structure
+## 📁 Portfolio Structure
 
-```text
-professional-statement/
-linux-notes/
-python-security/
-network-analysis/
-screenshots/
-```
+This repository is continuously evolving as I develop new skills and complete cybersecurity projects:
 
-## Professional Statement
+* **`/incident-response/`**: Application of the NIST Cybersecurity Framework (CSF) to detect, contain, and recover from network compromises (e.g., DoS attacks).
+* **`/security-audits/`**: Strategic risk assessments, vulnerability management, and network hardening implementations.
+* **`/network-analysis/`**: Packet capture analysis and traffic inspection using Wireshark and `tcpdump` (e.g., SYN Flood attacks, Malware redirection).
+* **`/python-security/`**: Scripts and tools focused on automation and security.
+* **`/linux-notes/`**: Administration, command-line interface (CLI) practices, and system configuration.
+* **`/professional-statement/`**: Detailed documentation of my professional background.
+* **`/screenshots/`**: Visual evidence and documentation for practical labs.
 
-I am a Mechatronics Engineering student with a strong interest in cybersecurity, automation, and embedded systems. I value continuous learning, analytical problem-solving, and the development of reliable technological solutions using tools such as Python and Linux. My goal is to contribute to the security and reliability of technological systems through monitoring, analysis, and information protection practices.
+## 🛠️ Core Skills & Tools
 
----
-This portfolio will continue evolving as I develop new skills and complete cybersecurity projects and labs.
+* **Cybersecurity:** Network Traffic Analysis, Risk Assessment, Incident Response (NIST CSF), Threat Mitigation.
+* **Security Tools:** Wireshark, `tcpdump`, Linux CLI.
+* **Engineering & Hardware:** Raspberry Pi 4, Arduino, Embedded Systems, Applied AI (Machine Learning), Autodesk Inventor.
+* **Programming & Automation:** Python, Bash.
+
+## 🚀 Current Goals
+
+* Strengthen cybersecurity and networking skills.
+* Develop security-focused Python tools.
+* Build practical projects blending Linux, embedded systems, and security protocols.
+* Expand this professional technical portfolio with real-world scenarios.
+
+## 📫 Let's Connect
+
+* **Email:** [quinterocastillodaniel3@gmail.com]
