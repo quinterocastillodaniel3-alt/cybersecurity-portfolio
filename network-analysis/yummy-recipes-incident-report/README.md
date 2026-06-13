@@ -43,7 +43,7 @@ The `tcpdump` logs initially show the user's machine making a normal DNS request
 ### 2. Malicious Redirection
 After the payload is executed, the logs show the browser being forced to make a new DNS request for the attacker's domain (`greatrecipesforme.com`). It resolves to a different IP (`192.0.2.17`), followed immediately by new HTTP traffic directed to this malicious server:
 
-![Malicious Redirection](malicious-redirection.png)
+![Malicious Redirection](greatrecipesforme.png)
 
 ### 📎 Attachments
 * [Download the full tcpdump traffic log](tcpdump-registro-de-trafico.docx)
