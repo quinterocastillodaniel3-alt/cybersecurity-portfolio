@@ -46,4 +46,4 @@ After the payload is executed, the logs show the browser being forced to make a 
 ![Malicious Redirection](greatrecipesforme.png)
 
 ### 📎 Attachments
-* [Download the full tcpdump traffic log](tcpdump-registro.pdf)
+* [Download the full tcpdump traffic log](tcpdump%20registro%20de%20tr%C3%A1fico.pdf)
