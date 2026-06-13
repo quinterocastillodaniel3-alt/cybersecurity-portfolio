@@ -30,3 +30,20 @@ To prevent future brute-force attacks, the organization must implement an **Acco
 This measure is highly effective because brute-force attacks rely on rapidly guessing thousands of password combinations. By locking the account after a few attempts, the attack is halted, making it mathematically impractical for a malicious actor to guess the password. 
 
 Additionally, as a mandatory baseline, the system should force administrators to **change default passwords** upon their first login and enforce strong password complexity requirements.
+
+---
+
+## Evidence and Traffic Analysis
+
+### 1. Initial Legitimate Traffic
+The `tcpdump` logs initially show the user's machine making a normal DNS request for the legitimate website (`yummyrecipesforme.com`) and receiving the correct IP address (`203.0.113.22`):
+
+![Initial DNS Request](yummy-dns-request.png)
+
+### 2. Malicious Redirection
+After the payload is executed, the logs show the browser being forced to make a new DNS request for the attacker's domain (`greatrecipesforme.com`). It resolves to a different IP (`192.0.2.17`), followed immediately by new HTTP traffic directed to this malicious server:
+
+![Malicious Redirection](malicious-redirection.png)
+
+### 📎 Attachments
+* [Download the full tcpdump traffic log](tcpdump-registro-de-trafico.docx)
