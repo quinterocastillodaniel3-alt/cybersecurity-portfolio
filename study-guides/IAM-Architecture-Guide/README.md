@@ -1,65 +1,65 @@
-# 🔐 Guía de Arquitectura IAM (Gestión de Identidades y Accesos)
+# 🔐 IAM Architecture Guide (Identity and Access Management)
 
-Este repositorio documenta los principios fundamentales de la gestión de identidades, controles de acceso y autenticación moderna en entornos empresariales.
-
----
-
-## 🛡️ Fundamentos de Control de Acceso
-
-El control de acceso en redes se fundamenta en el modelo **AAA**:
-
-* **Autenticación:** Verifica *quién* es el usuario.
-* **Autorización:** Determina *qué* puede hacer el usuario tras autenticarse.
-* **Contabilización (Accounting):** Monitoriza y registra la actividad del usuario en el sistema.
-
-### Principios Organizacionales Clave
-
-* **Separación de Funciones (SoD):** Dividir tareas críticas entre varias personas para evitar fraudes o errores. Por ejemplo, en una transacción financiera, un empleado realiza la compra, otro aprueba la transacción y un tercero paga la factura.
-* **Privilegio Mínimo:** Otorgar a los usuarios (o aplicaciones) únicamente los permisos estrictamente necesarios para realizar sus labores actuales, reduciendo así la superficie de ataque.
+This repository documents the fundamental principles of identity management, access controls, and modern authentication in enterprise environments.
 
 ---
 
-## 🔑 Factores de Autenticación
+## 🛡️ Access Control Fundamentals
 
-Para verificar la identidad de un usuario de forma segura, los sistemas combinan múltiples factores (MFA). Los tres factores universales son:
+Network access control is built upon the **AAA** model:
 
-1. **Conocimientos:** Algo que el usuario *sabe* (contraseñas, PIN, respuestas de seguridad).
-2. **Posesión / Responsabilidad:** Algo que el usuario *tiene* (token físico, smartphone, tarjeta inteligente).
-3. **Característica (Inherencia):** Algo que el usuario *es* (biometría, huella dactilar, reconocimiento facial).
+* **Authentication:** Verifies *who* the user is.
+* **Authorization:** Determines *what* the user can do after authenticating.
+* **Accounting:** Monitors, logs, and tracks the user's activity within the system.
+
+### Key Organizational Principles
+
+* **Separation of Duties (SoD):** Dividing critical tasks among several people to prevent fraud or errors. For example, in a financial transaction, one employee creates the purchase order, another approves it, and a third pays the invoice.
+* **Least Privilege:** Granting users (or applications) only the minimum permissions strictly necessary to perform their current duties, thereby reducing the attack surface.
 
 ---
 
-## 🌐 Inicio de Sesión Único (SSO) y Federaciones
+## 🔑 Authentication Factors
 
-El SSO es una tecnología que permite a los usuarios autenticarse una sola vez y acceder a múltiples sistemas interconectados.
+To securely verify a user's identity, systems combine multiple factors (MFA). The three universal factors are:
 
-* **Beneficios principales:** * Simplifica la gestión de usuarios y contraseñas para el equipo de TI.
-  * Proporciona una mejor y más fluida experiencia al usuario final.
-* **Desventaja principal:** Si las credenciales únicas son robadas, los atacantes obtienen acceso inmediato a múltiples recursos empresariales, lo que hace vital la implementación de MFA junto con SSO.
-* **Delegación de Autorización (OAuth):** Para permitir que las aplicaciones interactúen entre sí de forma segura sin compartir contraseñas reales, se utilizan **Tokens de interfaz de programación de aplicaciones (API)** temporales.
+1. **Knowledge:** Something the user *knows* (passwords, PINs, security questions).
+2. **Possession:** Something the user *has* (physical token, smartphone, smart card).
+3. **Inherence (Characteristic):** Something the user *is* (biometrics, fingerprint, facial recognition).
 
-### Diagrama de Flujo Conceptual: Autenticación SSO
+---
+
+## 🌐 Single Sign-On (SSO) and Federations
+
+SSO is a technology that allows users to authenticate once and access multiple interconnected systems.
+
+* **Main Benefits:** * Simplifies user and password management for the IT team.
+  * Provides a better and more seamless experience for the end-user.
+* **Main Disadvantage:** If the single set of credentials is stolen, attackers gain immediate access to multiple enterprise resources, making the implementation of MFA alongside SSO critical.
+* **Authorization Delegation (OAuth):** To allow applications to securely interact with each other without sharing actual passwords, temporary **Application Programming Interface (API) Tokens** are used.
+
+### Conceptual Flowchart: SSO Authentication
 
 ```mermaid
 sequenceDiagram
-    participant Usuario
-    participant App_Destino as Aplicación de Destino
-    participant Proveedor_Identidad as Proveedor de Identidad (IdP)
+    participant User
+    participant Target_App as Target Application
+    participant Identity_Provider as Identity Provider (IdP)
     
-    Usuario->>App_Destino: Intenta acceder al recurso protegido
-    App_Destino->>Usuario: Redirige al IdP para autenticación
-    Usuario->>Proveedor_Identidad: Ingresa credenciales (una sola vez)
-    Proveedor_Identidad->>Usuario: Valida identidad y entrega Token de acceso
-    Usuario->>App_Destino: Presenta Token de acceso válido
-    App_Destino->>Usuario: Concede acceso al sistema
+    User->>Target_App: Attempts to access protected resource
+    Target_App->>User: Redirects to IdP for authentication
+    User->>Identity_Provider: Enters credentials (only once)
+    Identity_Provider->>User: Validates identity and issues Access Token
+    User->>Target_App: Presents valid Access Token
+    Target_App->>User: Grants access to the system
 ```
 
 ---
 
-## 📊 Modelos de Control de Acceso: RBAC vs. ABAC
+## 📊 Access Control Models: RBAC vs. ABAC
 
-| Característica | RBAC (Control Basado en Roles) | ABAC (Control Basado en Atributos) |
+| Feature | RBAC (Role-Based Access Control) | ABAC (Attribute-Based Access Control) |
 | :--- | :--- | :--- |
-| **Definición fundamental** | El acceso se otorga basado en el rol o puesto del usuario dentro de la empresa. | El acceso se otorga evaluando características dinámicas del usuario, el entorno y el recurso. |
-| **Complejidad de implementación** | Baja a Media. Es el estándar de la industria y fácil de auditar. | Alta. Requiere motores de políticas lógicas más complejos. |
-| **Flexibilidad** | Rígida. (Ej. "Todos los del grupo 'Contadores' tienen acceso"). | Dinámica y granular. (Ej. "Contadores, solo de 9 a 5, y desde una IP interna"). |
+| **Core Definition** | Access is granted based on the user's role or job title within the company. | Access is granted by evaluating dynamic characteristics of the user, the environment, and the resource. |
+| **Implementation Complexity** | Low to Medium. It is the industry standard and easy to audit. | High. Requires more complex logical policy engines. |
+| **Flexibility** | Rigid. (e.g., "Everyone in the 'Accountants' group has access"). | Dynamic and granular. (e.g., "Accountants, only from 9 to 5, and from an internal IP"). |
