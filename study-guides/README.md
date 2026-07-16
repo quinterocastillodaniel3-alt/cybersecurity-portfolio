@@ -1,30 +1,41 @@
-# 📚 Cybersecurity Knowledge Base & Study Guides
+# 📚 Cybersecurity Study Guides & Theoretical Foundations
 
-![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-black?style=for-the-badge)
-![Research](https://img.shields.io/badge/Focus-Research_%26_Theory-blue?style=for-the-badge)
-![Continuous Learning](https://img.shields.io/badge/Skill-Continuous_Learning-success?style=for-the-badge)
+Welcome to the **Study Guides** directory. This section serves as a centralized knowledge base compiling foundational and advanced cybersecurity concepts, frameworks, and methodologies. 
 
-## 🧠 About This Repository
-Welcome to my personal cybersecurity knowledge base. While other sections of my portfolio focus on hands-on labs, practical simulations, and tactical operations, this directory serves as a living repository of the theoretical frameworks, industry standards, and methodologies that underpin effective security operations.
-
-As I progress in my academic research and professional journey in Information Security, maintaining a structured, accessible library of technical notes is crucial. This space bridges the gap between my foundational background in Mechatronics Engineering, my expertise in IoT architectures, and advanced cybersecurity principles.
+These guides have been structured to bridge the gap between industrial/embedded systems (IoT/Mechatronics) and enterprise network defense, serving as a robust theoretical preparation for advanced studies in Information Security.
 
 ---
 
-## 📂 Table of Contents
+## 🗂️ Directory Index
 
-### 🛡️ 1. Incident Response & Threat Management
-* [Guía de Estudio: Gestión y Respuesta a Incidentes de Seguridad](incident-response-guide.md)
-  * *Core Concepts:* NIST Incident Response Lifecycle, SOC Triage & Playbooks, Digital Evidence & Chain of Custody, Post-Mortem Analysis.
+Below is a breakdown of the study modules available in this directory. Click on any folder to access the detailed markdown guide.
 
-### 🌐 2. Network Security & Analysis (Coming Soon)
-* *Planned Topics:* Deep Packet Inspection, TCP/IP Fundamentals, Traffic Baseline Analysis.
+### 1. [IAM-Architecture-Guide](./IAM-Architecture-Guide/)
+* **Focus:** Identity and Access Management.
+* **Topics:** Authentication factors (MFA), Authorization models (RBAC vs. ABAC), Single Sign-On (SSO) architecture, and the AAA framework.
 
-### 🐧 3. System Administration & Automation (Coming Soon)
-* *Planned Topics:* Linux Security Hardening, Python Automation for Security Analysts.
+### 2. [Malware-and-Web-Exploits](./Malware-and-Web-Exploits/)
+* **Focus:** Attack vectors and application-layer vulnerabilities.
+* **Topics:** Social engineering tactics, malware classification (Ransomware, Trojans, Cryptojacking), and web exploits like Cross-Site Scripting (XSS) and SQL Injection (SQLi).
 
-### 🔌 4. IoT & Embedded Systems Security (Coming Soon)
-* *Planned Topics:* Threat Modeling for Connected Devices, Hardware Security Fundamentals.
+### 3. [Network-Traffic-Analysis](./Network-Traffic-Analysis/)
+* **Focus:** Network visibility and packet inspection.
+* **Topics:** TCP/IP model deep dives, IPv4 header anatomy, and practical usage of CLI protocol analyzers like `tcpdump` and `Scapy` (Python) for anomaly detection.
+
+### 4. [SecOps-SIEM-SOAR](./SecOps-SIEM-SOAR/)
+* **Focus:** Security Operations Center (SOC) infrastructure.
+* **Topics:** Intrusion Detection/Prevention Systems (IDS/IPS), log lifecycle and normalization within a SIEM, and automated incident response using SOAR playbooks.
+
+### 5. [Vuln-Management-Threat-Modeling](./Vuln-Management-Threat-Modeling/)
+* **Focus:** Proactive defense and risk assessment.
+* **Topics:** The attacker mindset, CVSS v3.1 scoring, vulnerability scanning methodologies, and the PASTA threat modeling framework.
+
+### 6. [incident-response](./incident-response/)
+* **Focus:** Incident handling and enterprise recovery.
+* **Topics:** The NIST Incident Response Lifecycle, triage procedures, evidence chain of custody, and conducting effective post-mortem (lessons learned) meetings.
 
 ---
-*"In cybersecurity, theory guides the practice, and practice refines the theory."*
+
+## 🎯 Purpose
+
+Continuous learning is the cornerstone of cybersecurity. This living documentation is continuously updated with new insights, best practices, and technical notes to ensure a state-of-the-art understanding of the cyber threat landscape.
