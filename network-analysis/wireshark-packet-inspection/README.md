@@ -1,8 +1,8 @@
 # Network Traffic Analysis & Packet Sniffing with Wireshark
 
-![Network Analysis](https://img.shields.io/badge/Network_Analysis-Wireshark-blue?style=for-the-badge)
-![Packet Sniffing](https://img.shields.io/badge/Packet_Sniffing-PCAP-darkgreen?style=for-the-badge)
-![Protocols](https://img.shields.io/badge/Protocols-TCP%20%7C%20UDP%20%7C%20DNS-orange?style=for-the-badge)
+[![Network Analysis](https://img.shields.io/badge/Network_Analysis-Wireshark-blue?style=for-the-badge)](https://www.wireshark.org/)
+[![Packet Sniffing](https://img.shields.io/badge/Packet_Sniffing-PCAP-darkgreen?style=for-the-badge)](https://en.wikipedia.org/wiki/Pcap)
+[![Protocols](https://img.shields.io/badge/Protocols-TCP%20%7C%20UDP%20%7C%20DNS-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/Internet_protocol_suite)
 
 ## 📌 Project Description
 As a Security Analyst, monitoring and interpreting network communications is essential for detecting anomalies, unauthorized access, and malware signatures. In this project, I utilized **Wireshark**, an industry-standard graphical network protocol analyzer, to inspect a network packet capture file (`.pcap`). The objective of this lab was to dissect network traffic, identify specific source and destination IPs, examine underlying protocols (ICMP, TCP, UDP, DNS), and extract raw payload text to understand the exact nature of the web session.
