@@ -1,8 +1,8 @@
 # Post-Incident Response: Final Report Analysis
 
-![Incident Response](https://img.shields.io/badge/Incident_Response-Post--Incident-blue?style=for-the-badge)
-![Web Security](https://img.shields.io/badge/Web_Security-Forced_Browsing-red?style=for-the-badge)
-![NIST](https://img.shields.io/badge/Framework-NIST_Lifecycle-darkgreen?style=for-the-badge)
+[![Incident Response](https://img.shields.io/badge/Incident_Response-Post--Incident-blue?style=for-the-badge)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+[![Web Security](https://img.shields.io/badge/Web_Security-Forced_Browsing-red?style=for-the-badge)](https://owasp.org/www-community/attacks/Forced_browsing)
+[![NIST](https://img.shields.io/badge/Framework-NIST_Lifecycle-darkgreen?style=for-the-badge)](https://www.nist.gov/cyberframework)
 
 ## 📌 Project Description
 The final phase of the NIST Incident Response Lifecycle is Post-Incident Activity, which focuses on documenting the breach, analyzing the root cause, and implementing strategic defenses to prevent recurrence. In this project, I acted as a Tier 1 SOC Analyst for a mid-sized retail company conducting a post-incident review of a major data breach involving the e-commerce platform. The objective of this review was to extract the core timeline, assess the operational impact, evaluate the containment response, and document the final security recommendations.
