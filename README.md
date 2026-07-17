@@ -2,7 +2,7 @@
 
 [![Location](https://img.shields.io/badge/Location-Medell%C3%ADn%2C_Colombia-success?style=for-the-badge&logo=google-maps)](#)
 [![Education](https://img.shields.io/badge/Degree-Mechatronics_Engineering-blue?style=for-the-badge&logo=prometric)](#)
-[![Focus](https://img.shields.io/badge/Focus-Cybersecurity_%26_IT%2FOT-darkred?style=for-the-badge&logo=shield)](#)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/daniel-quintero-castillo-4090a4399/)
 
 Welcome to my Cybersecurity Portfolio. 
 
@@ -25,16 +25,16 @@ I value continuous learning, analytical problem-solving, and the development of 
 ---
 
 ## 📁 Portfolio Directory Structure
-This repository is continuously evolving. Below is the active directory of my cybersecurity projects, mapping directly to the folders in this repository:
+This repository is continuously evolving. Below is the active directory of my cybersecurity projects. Click on any folder to view the detailed documentation:
 
-* 🛡️ **`/incident-response/`**: Application of the NIST Cybersecurity Framework (CSF) to detect, contain, and recover from network compromises and malware infections.
-* 🐧 **`/linux-notes/`**: Administration, command-line interface (CLI) mastery, Identity and Access Management (IAM), and system configuration.
-* 🌐 **`/network-analysis/`**: Deep packet inspection, traffic analysis, and IDS monitoring using Wireshark, `tcpdump`, and Suricata.
-* 📄 **`/professional-statement/`**: Detailed documentation of my professional background, engineering projects, and career objectives.
-* 🐍 **`/python-security/`**: Scripts and automation tools focused on security workflows, log parsing, and network analysis.
-* 📋 **`/security-audits/`**: Strategic risk assessments (NIST SP 800-30), vulnerability management, threat modeling (PASTA), and database hardening.
-* 📚 **`/study-guides/`**: Consolidated notes, cheat sheets, and documentation for cybersecurity certifications and continuous learning.
-* 🪟 **`/windows-endpoint-hardening/`**: System administration, registry configurations, active directory concepts, and endpoint defense strategies.
+* 🛡️ [**`/incident-response/`**](./incident-response/): Application of the NIST Cybersecurity Framework (CSF) to detect, contain, and recover from network compromises and malware infections.
+* 🐧 [**`/linux-notes/`**](./linux-notes/): Administration, command-line interface (CLI) mastery, Identity and Access Management (IAM), and system configuration.
+* 🌐 [**`/network-analysis/`**](./network-analysis/): Deep packet inspection, traffic analysis, and IDS monitoring using Wireshark, `tcpdump`, and Suricata.
+* 📄 [**`/professional-statement/`**](./professional-statement/): Detailed documentation of my professional background, engineering projects, and career objectives.
+* 🐍 [**`/python-security/`**](./python-security/): Scripts and automation tools focused on security workflows, log parsing, and network analysis.
+* 📋 [**`/security-audits/`**](./security-audits/): Strategic risk assessments (NIST SP 800-30), vulnerability management, threat modeling (PASTA), and database hardening.
+* 📚 [**`/study-guides/`**](./study-guides/): Consolidated notes, cheat sheets, and documentation for cybersecurity certifications and continuous learning.
+* 🪟 [**`/windows-endpoint-hardening/`**](./windows-endpoint-hardening/): System administration, registry configurations, active directory concepts, and endpoint defense strategies.
 
 ---
 
@@ -65,4 +65,4 @@ This repository is continuously evolving. Below is the active directory of my cy
 
 ## 📫 Let's Connect
 * **Email:** quinterocastillodaniel3@gmail.com
-* **LinkedIn:** [https://www.linkedin.com/in/daniel-quintero-castillo-4090a4399/]
+* **LinkedIn:** [Daniel Quintero Castillo](https://www.linkedin.com/in/daniel-quintero-castillo-4090a4399/)
