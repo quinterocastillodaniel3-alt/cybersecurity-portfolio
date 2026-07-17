@@ -1,8 +1,8 @@
 # Phishing Incident Response & Playbook Execution
 
-![Incident Response](https://img.shields.io/badge/Incident_Response-Playbook-blue?style=for-the-badge)
-![SOC Operations](https://img.shields.io/badge/SOC_Operations-Tier_1-darkgreen?style=for-the-badge)
-![Malware](https://img.shields.io/badge/Malware-Password_Protected-red?style=for-the-badge)
+[![Incident Response](https://img.shields.io/badge/Incident_Response-Playbook-blue?style=for-the-badge)](https://www.cisa.gov/resources-tools/services/incident-response-training)
+[![SOC Operations](https://img.shields.io/badge/SOC_Operations-Tier_1-darkgreen?style=for-the-badge)](https://en.wikipedia.org/wiki/Information_security_operations_center)
+[![Malware](https://img.shields.io/badge/Malware-Password_Protected-red?style=for-the-badge)](https://attack.mitre.org/techniques/T1027/)
 
 ## 📌 Project Description
 In this project, I acted as a Tier 1 Security Operations Center (SOC) Analyst responding to a potentially malicious email alert (Ticket ID: A-2703). The objective was to evaluate the alert, analyze the email components, and execute the organization's Standard Operating Procedure (SOP) using a Phishing Playbook. Based on the investigation findings, I formally updated the incident ticket and escalated the threat to Tier 2 for containment.
