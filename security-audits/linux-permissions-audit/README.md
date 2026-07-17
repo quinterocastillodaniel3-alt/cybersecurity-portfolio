@@ -1,14 +1,20 @@
-# Linux File Permissions Management - Security Audit
+# Linux File Permissions Management & Security Audit
+
+[![Linux Security](https://img.shields.io/badge/OS-Linux_Security-blue?style=for-the-badge)](https://www.kernel.org/doc/html/latest/security/index.html)
+[![IAM](https://img.shields.io/badge/Domain-Identity_%26_Access_Management-darkgreen?style=for-the-badge)](https://en.wikipedia.org/wiki/Identity_and_access_management)
+[![Least Privilege](https://img.shields.io/badge/Security_Principle-Least_Privilege-red?style=for-the-badge)](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege)
 
 ## 📌 Project Description
-As a security professional in a large organization, part of my role involves ensuring that users within the research team have the appropriate authorizations to maintain system security. In this project, I performed a security audit of a Linux file system. The objective was to examine existing permissions, identify misconfigurations, and apply the **Principle of Least Privilege** by modifying permissions to remove unauthorized access and secure sensitive research files.
+As a security professional, part of my role involves auditing user authorizations to maintain robust system security. In this project, I performed a security audit of a Linux file system utilized by a corporate research team. 
+
+The objective was to examine existing access controls, identify misconfigurations, and strictly enforce the **Principle of Least Privilege (PoLP)** by modifying permissions to revoke unauthorized access, thereby securing sensitive research files and directories.
 
 ---
 
-## 🔍 Checking File and Directory Details
-To begin the investigation, I needed to check the current permissions set for the files and subdirectories within the `projects` directory. It was crucial to display all files, including hidden ones.
+## 🔍 Phase 1: File System Baseline & Triage
+To begin the investigation, I needed to establish a baseline of the current permissions set for the files and subdirectories within the `projects` directory. It was crucial to display all contents, including hidden system or archive files.
 
-**Command used:**
+**Command Executed:**
 ```bash
 ls -la
 ```
@@ -22,56 +28,53 @@ drwxr-xr-x 4 root        root     4096 Jun 29 08:45 ..
 drwxr-xr-x 2 researcher2 research 4096 Jun 29 08:55 drafts
 ```
 
----
-
-## 📖 Describing the Permissions String
-In Linux, file permissions are represented by a 10-character string. Taking the file `project_m.txt` (`-rw-rw-rw-`) as an example, here is the breakdown of what each character represents:
-
-* **1st Character (`-`)**: Represents the file type. A hyphen (`-`) indicates a regular file, while a `d` would indicate a directory.
-* **2nd, 3rd, 4th Characters (`rw-`)**: Represent the **Owner (User)** permissions. `r` means read, `w` means write, and `-` means execute is not allowed.
-* **5th, 6th, 7th Characters (`rw-`)**: Represent the **Group** permissions. Anyone in the assigned group can read and write.
-* **8th, 9th, 10th Characters (`rw-`)**: Represent the **Others** permissions. This means any other user on the system has read and write access, which is a significant security risk.
+### 📖 Permissions String Breakdown
+In Linux, file permissions are represented by a 10-character string. Taking the heavily misconfigured file `project_m.txt` (`-rw-rw-rw-`) as an example, the breakdown is as follows:
+* **1st Character (`-`)**: Represents the file type (hyphen = regular file, `d` = directory).
+* **2nd, 3rd, 4th (`rw-`)**: **Owner (User)** permissions. Read (`r`), Write (`w`), and Execute (`x`).
+* **5th, 6th, 7th (`rw-`)**: **Group** permissions. Users in the `research` group can read and write.
+* **8th, 9th, 10th (`rw-`)**: **Others** permissions. Any other authenticated user on the system has read and write access, representing a critical security risk (Data Modification).
 
 ---
 
-## 🛡️ Changing File Permissions
-The organization's security policy strictly states that "Other" users should not have write access to any files. Based on the previous output, `project_m.txt` had unauthorized write permissions for others (`-rw-rw-rw-`).
+## 🛡️ Phase 2: Remediation & Access Control Updates
 
-To revoke the write access for others without affecting the owner or group, I used the following command:
+### Remediation 1: Revoking Global Write Access (Symbolic Mode)
+The organization's security policy strictly dictates that "Other" users must not have write access to collaborative files. Based on the baseline output, `project_m.txt` possessed unauthorized global write permissions (`-rw-rw-rw-`).
 
-**Command used:**
+To revoke the write access for others without disrupting the owner or group workflows, I utilized symbolic modification:
+
+**Command Executed:**
 ```bash
 chmod o-w project_m.txt
 ```
-*Result: The permissions string for `project_m.txt` was successfully updated to `-rw-rw-r--`, securing it against unauthorized modifications.*
+* **Result:** The permissions string for `project_m.txt` was successfully hardened to `-rw-rw-r--`, securing it against unauthorized modifications while allowing public read access.
 
----
+### Remediation 2: Securing Hidden Archives (Absolute/Octal Mode)
+The research team archived a log file named `.project_x.txt`. As a hidden archive, it requires strict access controls. It must not have write permissions for anyone, but both the user (owner) and the group must retain read access.
 
-## 🔒 Changing File Permissions on a Hidden File
-The research team archived a log file named `.project_x.txt`. As a hidden file, it requires strict access controls. It should not have write permissions for anyone, but both the user (owner) and the group should retain read access.
+To assign this exact authorization efficiently, I utilized absolute (octal) mode:
 
-To assign the appropriate authorization, I used absolute (octal) mode:
-
-**Command used:**
+**Command Executed:**
 ```bash
 chmod 440 .project_x.txt
 ```
-*Result: This command changed the permissions to `-r--r-----`. Now, the owner and group can read the file (4), but no one has write or execute permissions, and 'others' have absolutely no access (0).*
+* **Result:** The permissions were updated to `-r--r-----`. The owner and group can read the file (4+0=4), but 'others' have absolutely no access (0).
 
----
+### Remediation 3: Directory Isolation (Zero Trust)
+The `drafts` directory and its contents belong exclusively to the user `researcher2`. To prevent unauthorized access, lateral movement, or internal data leaks, only `researcher2` should be permitted to traverse this directory.
 
-## 📁 Changing Directory Permissions
-The `drafts` directory and its contents belong exclusively to the user `researcher2`. To prevent unauthorized access, lateral movement, or data leaks, only `researcher2` should be allowed to access this directory.
+To lock down the directory completely, I enforced strict isolation:
 
-To lock down the directory completely, I used the following command:
-
-**Command used:**
+**Command Executed:**
 ```bash
 chmod 700 drafts
 ```
-*Result: The permissions for the `drafts` directory were updated to `drwx------`. This ensures that only the owner has full read, write, and execute (traverse) rights, completely blocking out the group and other users.*
+* **Result:** The permissions for the `drafts` directory were updated to `drwx------`. This ensures that only the owner has full read, write, and execute (traverse) rights, completely blocking out the group and all other users.
 
 ---
 
-## 📝 Summary
-In this scenario, I successfully audited and hardened a Linux file system for a research team. By utilizing core Linux commands like `ls -la` to inspect ownership and `chmod` to modify access rights, I mitigated security risks associated with overly permissive settings. I revoked public write access to collaborative files, secured hidden archives to a read-only state for authorized personnel, and isolated sensitive directories. This exercise demonstrates my ability to navigate the Linux command line and practically apply access control concepts to protect organizational data.
+## 📝 Summary & Security Impact
+In this scenario, I successfully audited and hardened a Linux file system. By utilizing core Linux utilities (`ls -la` to inspect ownership/permissions and `chmod` to modify access rights), I mitigated the security risks associated with overly permissive (Access Drift) settings. 
+
+I revoked public write access to collaborative files, secured hidden archives to a read-only state, and isolated sensitive user directories. This exercise demonstrates a practical application of the Principle of Least Privilege and the ability to navigate the Linux command line to enforce organizational data protection policies.
