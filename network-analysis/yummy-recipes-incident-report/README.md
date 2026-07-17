@@ -1,39 +1,33 @@
-# Security Incident Report: Website Compromise and Malware Redirection
+# Incident Report: Web Server Compromise & Malware Redirection
 
-## Section 1: Identify the network protocols involved in the incident 
+[![Web Security](https://img.shields.io/badge/Web_Security-Brute_Force-red?style=for-the-badge)](https://owasp.org/www-community/attacks/Brute_force_attack)
+[![Malware Analysis](https://img.shields.io/badge/Malware-Payload_Delivery-darkred?style=for-the-badge)](https://attack.mitre.org/tactics/TA0002/)
+[![Network Analysis](https://img.shields.io/badge/Network_Analysis-tcpdump-blue?style=for-the-badge)](https://www.tcpdump.org/)
 
-Based on the `tcpdump` traffic logs and the sandbox investigation, the following network protocols were identified:
-* **DNS (Domain Name System):** Identified in the logs when the source computer requests the IP address for the domains (`yummyrecipesforme.com` and the malicious `greatrecipesforme.com`) over port 53.
-* **HTTP (Hypertext Transfer Protocol):** Identified when the browser requests the webpage (`GET / HTTP/1.1`) and initiates the download of the malicious executable file over port 80.
-* **TCP (Transmission Control Protocol):** Identified by the `Flags [S]` (SYN) and `[.]` (ACK) during the connection handshakes between the client and the web servers.
-
----
-
-## Section 2: Document the incident
-
-**Incident Summary:**
-Customers of *yummyrecipesforme.com* reported that after visiting the website, they were prompted to download a file to access free recipes. Upon execution, the file caused system performance degradation and redirected their browsers to a different website. Simultaneously, the website owner lost access to the administrative panel.
-
-**Investigation Findings:**
-* **Attack Vector:** A former employee executed a brute-force attack against the website's administrative login page. The attack was successful because the default administrative password had not been changed, and there were no rate-limiting controls in place.
-* **Payload:** Once authenticated, the attacker altered the website's source code, embedding a malicious JavaScript function. This script prompts visitors to download a fake "browser update" executable. Furthermore, the attacker changed the admin password, locking out the legitimate owner.
-* **Network Analysis:** Sandbox testing using `tcpdump` confirmed the behavior. The logs show the initial DNS resolution and HTTP connection to `yummyrecipesforme.com` (IP: `203.0.113.22`). After the executable is downloaded and run, the logs show a new DNS request and subsequent HTTP traffic forcefully redirecting the user to the malicious domain `greatrecipesforme.com` (IP: `192.0.2.17`).
+## 📌 Incident Summary
+Customers of the corporate portal *yummyrecipesforme.com* reported that after visiting the website, they were prompted to download a file to access free recipes. Upon execution, the file caused system performance degradation and forcefully redirected their browsers to a different, untrusted website. Simultaneously, the website owner reported losing access to the backend administrative panel.
 
 ---
 
-## Section 3: Recommend one remediation for brute force attacks
+## 🔍 Investigation Findings
+A forensic analysis of the web server and network traffic revealed the complete attack chain:
 
-**Recommendation: Implement Account Lockout Policies and Disable Default Credentials**
-
-To prevent future brute-force attacks, the organization must implement an **Account Lockout Policy** that limits the number of failed login attempts. For example, after 3 to 5 incorrect password attempts, the account or the originating IP address should be temporarily locked for a set duration (e.g., 30 minutes). 
-
-This measure is highly effective because brute-force attacks rely on rapidly guessing thousands of password combinations. By locking the account after a few attempts, the attack is halted, making it mathematically impractical for a malicious actor to guess the password. 
-
-Additionally, as a mandatory baseline, the system should force administrators to **change default passwords** upon their first login and enforce strong password complexity requirements.
+* **Attack Vector (Initial Access):** A former employee executed a brute-force attack against the website's administrative login page. The attack succeeded because the default administrative password had never been changed, and the server lacked rate-limiting controls.
+* **Payload (Execution):** Once authenticated as an administrator, the threat actor altered the website's source code by embedding a malicious JavaScript function. This script prompted visitors to download a fake "browser update" executable. 
+* **Persistence & Denial of Service:** The attacker subsequently changed the admin password, completely locking out the legitimate owner and preventing immediate remediation.
 
 ---
 
-## Evidence and Traffic Analysis
+## 📡 Network Protocol Analysis
+Based on the `tcpdump` traffic logs and sandbox execution of the payload, the following network protocols were actively utilized during the incident:
+
+* **DNS (Domain Name System - Port 53):** Identified when the compromised client requested IP resolution for the legitimate domain (`yummyrecipesforme.com`) and later for the malicious domain (`greatrecipesforme.com`).
+* **HTTP (Hypertext Transfer Protocol - Port 80):** Identified when the browser requested the webpage (`GET / HTTP/1.1`) and initiated the download of the malicious executable file.
+* **TCP (Transmission Control Protocol):** Identified by the `Flags [S]` (SYN) and `[.]` (ACK) indicating the connection handshakes between the client and both the legitimate and malicious web servers.
+
+---
+
+## 🔬 Evidence and Traffic Log Analysis
 
 ### 1. Initial Legitimate Traffic
 The `tcpdump` logs initially show the user's machine making a normal DNS request for the legitimate website (`yummyrecipesforme.com`) and receiving the correct IP address (`203.0.113.22`):
@@ -41,9 +35,18 @@ The `tcpdump` logs initially show the user's machine making a normal DNS request
 ![Initial DNS Request](yummy-dns-request.png)
 
 ### 2. Malicious Redirection
-After the payload is executed, the logs show the browser being forced to make a new DNS request for the attacker's domain (`greatrecipesforme.com`). It resolves to a different IP (`192.0.2.17`), followed immediately by new HTTP traffic directed to this malicious server:
+After the payload is executed, the logs show the browser being forced to make a new DNS request for the attacker's domain (`greatrecipesforme.com`). It resolves to a different IP (`192.0.2.17`), followed immediately by anomalous HTTP traffic directed to this malicious server:
 
 ![Malicious Redirection](greatrecipesforme.png)
 
-### 📎 Attachments
+### 📎 Artifacts
 * [Download the full tcpdump traffic log](tcpdump%20registro%20de%20tr%C3%A1fico.pdf)
+
+---
+
+## 🛡️ Remediation & Mitigation Strategy
+To resolve the vulnerability that facilitated this compromise, the organization must implement the following security controls:
+
+1. **Account Lockout Policies (Rate Limiting):** Implement a strict lockout policy that limits the number of failed login attempts. For example, after 3 to 5 incorrect password attempts, the account or the originating IP address should be temporarily locked for 30 minutes. This makes brute-forcing mathematically impractical by halting the automated guessing process.
+2. **Disable Default Credentials:** As a mandatory baseline configuration, the system must force administrators to change default passwords upon their first login.
+3. **Enforce Password Complexity:** Implement Identity and Access Management (IAM) policies requiring minimum length, alphanumeric characters, and symbols to ensure resistance against dictionary attacks.
