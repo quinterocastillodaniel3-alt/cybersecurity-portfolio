@@ -1,29 +1,47 @@
 # Data Handling Practices & NIST Compliance Audit
 
+[![Framework](https://img.shields.io/badge/Framework-NIST_SP_800--53-blue?style=for-the-badge)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+[![Domain](https://img.shields.io/badge/Domain-GRC_%26_Compliance-darkgreen?style=for-the-badge)](https://en.wikipedia.org/wiki/Governance,_risk_management,_and_compliance)
+[![Principle](https://img.shields.io/badge/Security_Principle-Least_Privilege-red?style=for-the-badge)](https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/least-privilege)
+
 ## 📌 Project Description
-This project involves auditing an organization's data handling practices following a data leak incident. [cite_start]The objective was to evaluate the incident against the **NIST Cybersecurity Framework (CSF)** [cite: 11][cite_start]—specifically focusing on data security (PR.DS-5) [cite: 13] [cite_start]and the principle of Least Privilege (AC-6)[cite: 13, 25]. By analyzing the control failures, I developed actionable recommendations to enforce stricter data privacy and mitigate the risk of accidental internal data exposure.
+This project documents a comprehensive security audit of an organization's data handling practices following a data leak incident. The primary objective was to evaluate the incident against the **NIST Cybersecurity Framework (CSF)**—specifically focusing on data security (PR.DS-5) and the principle of Least Privilege (AC-6). 
+
+By analyzing the administrative and technical control failures, I developed actionable recommendations to enforce stricter data privacy policies and mitigate the risk of internal data exposure.
 
 ---
 
-## 🔍 Incident Summary & Identified Issues
-[cite_start]A data leak occurred when a sales manager shared a folder of internal-only documents (including unannounced product files and customer analytics) [cite: 2, 3, 4] [cite_start]with their team but failed to revoke access after the meeting[cite: 4]. [cite_start]Subsequently, during a call with a business partner, a sales representative accidentally shared the link to the entire internal folder instead of the intended promotional materials[cite: 5, 6, 7]. [cite_start]The business partner then posted this link on their company's social media[cite: 8].
+## 🔍 Incident Summary & Root Cause Analysis
 
-[cite_start]**Root Cause Analysis:** Access to the internal folder was not properly limited to the sales team and the manager[cite: 9]. [cite_start]There was a widespread neglect of information confidentiality, and the business partner should never have had permissions that allowed for sharing sensitive information externally[cite: 9].
+### The Incident
+A severe data leak occurred when a sales manager shared a cloud folder containing internal-only documents (including unannounced product schematics and customer analytics) with their immediate team. The manager failed to revoke this open access after the project meeting concluded. 
 
----
+Subsequently, during a call with an external business partner, a sales representative accidentally shared the URL to the entire internal folder instead of the intended promotional materials. The business partner, unaware of the confidentiality, posted this link on their company's public social media channels.
 
-## 📖 NIST SP 800-53: AC-6 Review
-[cite_start]To address this systemic failure, I reviewed **NIST SP 800-53: AC-6**, which provides guidelines for securing information privacy by implementing the concept of "Least Privilege"[cite: 9, 14, 18]. [cite_start]The core control dictates that users should only be provided the minimal access and authorization required to complete their specific tasks[cite: 25]. [cite_start]The intention is to prevent a user from operating at privilege levels higher than what is necessary to accomplish business objectives[cite: 25]. [cite_start]The framework also provides specific control enhancements to improve the effectiveness of least privilege implementation[cite: 9, 24].
-
----
-
-## 🛡️ Control Recommendations
-Based on the NIST framework enhancements, I recommended implementing the following controls to prevent future data leaks:
-1. [cite_start]**Restrict access to sensitive resources based on user role**[cite: 9, 25].
-2. [cite_start]**Automatically revoke access to information after a period of time**[cite: 25].
-3. [cite_start]**Regularly audit user privileges**[cite: 9, 25].
+### Root Cause Analysis
+The investigation revealed a systemic failure in Identity and Access Management (IAM):
+* **Excessive Permissions:** Access to the internal folder was not properly restricted to the authorized sales team. The business partner was able to view the contents because the folder's share settings allowed "Anyone with the link" to access it, rather than restricting it to verified corporate accounts.
+* **Access Drift:** There was a widespread neglect of information confidentiality. Permissions were granted for a specific event (the meeting) but were never audited or revoked afterward.
 
 ---
 
-## ⚖️ Business Justification
-Automating security tasks, such as setting automatic expiration dates on access links, is a highly effective way to reduce the likelihood of human error. [cite_start]Furthermore, data leaks can be actively prevented if shared links to internal files are strictly restricted to verified employees only[cite: 9]. [cite_start]Requiring management and security teams to regularly audit access to team files directly limits the exposure of sensitive information [cite: 9] and ensures that the organization maintains robust and compliant data privacy standards.
+## 📖 Framework Application: NIST SP 800-53 (AC-6)
+To address this systemic failure, I evaluated the organization's policies against **NIST SP 800-53: AC-6 (Least Privilege)**. 
+
+This core security control dictates that organizations must provide users with only the minimal access and authorization necessary to complete their specific business tasks. The intention is to prevent a user (or an external partner) from operating at privilege levels higher than required, drastically reducing the blast radius of human error or compromised accounts.
+
+---
+
+## 🛡️ Remediation & Security Controls
+Based on the NIST framework enhancements, I recommended implementing the following technical and administrative controls to prevent future data leaks:
+
+1. **Implement Role-Based Access Control (RBAC):** Restrict access to sensitive resources strictly based on the user's verified role within the organization directory. External sharing must be disabled by default for internal project folders.
+2. **Deploy Time-Bound Access:** Automate the revocation of access to highly sensitive information. When temporary access is granted, the system should automatically expire the link or permissions after a predefined period (e.g., 24 or 48 hours).
+3. **Mandatory Access Reviews (Privilege Auditing):** Enforce automated quarterly audits where department managers must review and explicitly re-approve the access rights of all team members to shared drives.
+
+---
+
+## ⚖️ Business Justification & Impact
+Automating security tasks—such as setting automatic expiration dates on access links—is a highly effective strategy to remove the reliance on human memory and reduce operational risk. 
+
+By strictly restricting shared links to authenticated employees and enforcing routine privilege audits, the organization directly limits the exposure of proprietary intellectual property. These remediation steps not only prevent accidental data leaks but also ensure the organization maintains robust, provable compliance with modern data privacy standards.
