@@ -1,58 +1,81 @@
-# Intrusion Detection and Log Analysis with Suricata
+# Practical Guide: Intrusion Detection & Log Analysis with Suricata
 
 ![Network Security](https://img.shields.io/badge/Network_Security-IDS-blue?style=for-the-badge)
 ![Suricata](https://img.shields.io/badge/Tool-Suricata-red?style=for-the-badge)
 ![JSON Parsing](https://img.shields.io/badge/JSON_Parsing-jq-darkgreen?style=for-the-badge)
 
-## 📌 Project Description
-In this scenario, I acted as a security analyst responsible for monitoring network traffic[cite: 1]. The objective was to configure Suricata, an open-source intrusion detection system (IDS), intrusion prevention system (IPS), and network analysis tool, to trigger alerts[cite: 1]. I analyzed packet captures (`sample.pcap`), examined custom rule signatures, and parsed the resulting log files (`fast.log` and `eve.json`) to understand network telemetry and alert generation[cite: 1].
+## 📌 Overview
+Welcome to this practical guide on network traffic analysis using **Suricata**, an open-source Intrusion Detection System (IDS). This repository serves as a hands-on reference for security analysts and threat hunters who want to learn how to:
+1. Write custom IDS rules.
+2. Process `.pcap` (Packet Capture) files through Suricata.
+3. Parse and extract valuable threat intelligence from `eve.json` logs using the `jq` command-line utility.
 
 ---
 
-## ⚙️ Suricata Rule Anatomy
-A Suricata rule (or signature) consists of three main components: an action, a header, and rule options[cite: 1]. 
+## ⚙️ 1. The Anatomy of a Suricata Rule
+Before running Suricata, you need to tell it what to look for. Suricata rules (or signatures) are highly customizable. Let's break down a practical example:
 
-* **Action:** This determines what happens if all conditions are met[cite: 1]. 
-  * Common actions differ among systems but generally include `alert`, `drop`, `pass`, and `reject`[cite: 1]. 
-  * The `alert` action inspects traffic and sends an alert upon a match[cite: 1]. 
-  * The `drop` action deletes the traffic, but this only occurs when Suricata runs in IPS mode[cite: 1].
-* **Header:** This defines the network traffic attributes, including protocols, source/destination IPs, ports, and traffic direction[cite: 1]. 
-  * For example, the header `http $HOME_NET any ->$EXTERNAL_NET any` applies specifically to HTTP traffic moving from an internal network to an external one[cite: 1]. 
-  * The `$HOME_NET` variable was explicitly defined as the `172.21.224.0/20` subnet to identify the organization's systems[cite: 1].
-* **Rule Options:** These are enclosed in parentheses and separated by semicolons, allowing for precise traffic filtering[cite: 1]. 
-  * The `msg` option provides the specific text for the alert, such as "GET on wire"[cite: 1]. 
-  * The `content` option instructs Suricata to search for specific strings, like the word "GET" within the HTTP method[cite: 1]. 
-  * The `sid` represents a unique numeric signature ID that identifies the rule[cite: 1].
-  * The `rev` option indicates the revision version of the signature[cite: 1].
+```text
+alert http $HOME_NET any -> $EXTERNAL_NET any (msg:"GET on wire"; flow:established,to_server; content:"GET"; http_method; sid:12345; rev:3;)
+```
 
----
-
-## 🚀 Execution & Traffic Analysis
-To process the network traffic, I executed Suricata using the following command[cite: 1]:
-
-`sudo suricata -r sample.pcap -S custom.rules -k none`[cite: 1]
-
-* **Command Breakdown:** 
-  * The `-r` option specified the input file (`sample.pcap`) to mimic live network traffic[cite: 1]. 
-  * The `-S` option instructed Suricata to use the custom signatures defined in the `custom.rules` file[cite: 1]. 
-  * The `-k none` option disabled checksum checks, as the integrity of the sample capture file did not need to be verified during this simulation[cite: 1].
+### Rule Breakdown:
+* **Action (`alert`):** Tells the engine what to do when it finds a match. Other common actions include `drop` (in IPS mode), `pass`, or `reject`.
+* **Header (`http $HOME_NET any ->$EXTERNAL_NET any`):** Defines the protocol (HTTP), the source IP and port (`$HOME_NET any`), the direction of the traffic (`->`), and the destination (`$EXTERNAL_NET any`). Variables like `$HOME_NET` are defined in the `suricata.yaml` configuration file.
+* **Options `(...)`:** The specific conditions to trigger the rule.
+  * `msg:"GET on wire";` -> The alert name that will appear in the logs.
+  * `content:"GET"; http_method;` -> The specific payload string Suricata will search for.
+  * `sid:12345; rev:3;` -> The Signature ID (must be unique) and its revision number.
 
 ---
 
-## 📊 Log Analysis & Event Correlation
-After executing the rules against the packet capture, Suricata generated output logs in the `/var/log/suricata` directory[cite: 1].
+## 🚀 2. Executing Suricata for PCAP Analysis
+To analyze a captured network session (`sample.pcap`) against our custom rule file (`custom.rules`), we execute the following command in the terminal:
 
-### 1. The `fast.log` File
-* Each line in this file corresponds to a specific alert generated when a packet meets the conditions of a rule[cite: 1]. 
-* While this format is considered deprecated and not recommended for deep incident response, it is highly useful for quick checks and quality assurance testing[cite: 1].
+```bash
+sudo suricata -r sample.pcap -S custom.rules -k none
+```
 
-### 2. The `eve.json` File
-* This is the main, standard log file for Suricata events[cite: 1]. 
-* It contains highly detailed information about triggered alerts and network telemetry stored in JSON format[cite: 1]. 
-* To parse this complex data efficiently, I utilized the `jq` command-line tool to extract specific fields and improve readability[cite: 1].
+* `-r sample.pcap`: Instructs Suricata to read from an offline packet capture file instead of listening to a live network interface.
+* `-S custom.rules`: Specifies the path to our custom signature file.
+* `-k none`: Disables checksum validation (useful when analyzing sample/test `.pcap` files where checksums might be invalid).
 
-**Key Findings from `eve.json` Extraction:**
-* The severity property for the first triggered alert had a value of 3[cite: 1].
-* The alert signature for the first entry was recorded as "GET on WIRE"[cite: 1].
-* The destination IP address identified for the final event in the log was `142.250.1.102`[cite: 1].
-* By extracting the `flow_id` (a unique 16-digit number assigned to a network flow), I was able to correlate multiple log records belonging to the same sequence of packets between a source and a destination[cite: 1].
+---
+
+## 📊 3. Threat Hunting: Analyzing the Logs
+Once the execution is complete, Suricata deposits its findings in the `/var/log/suricata/` directory.
+
+### The `fast.log` file (Quick Triage)
+The `fast.log` provides a quick, human-readable summary of triggered alerts. It is excellent for verifying if a rule works but lacks the depth needed for a full investigation.
+```bash
+cat /var/log/suricata/fast.log
+# Output example:
+# 10/26/2023-14:30:05.123456  [**] [1:12345:3] GET on wire [**] [Classification: Web Application Attack] [Priority: 3] {TCP} 172.21.224.2:54321 -> 142.250.1.102:80
+```
+
+### The `eve.json` file (Deep Analysis)
+This is the standard and most powerful log generated by Suricata. It records extensive telemetry in JSON format. Because raw JSON is hard to read in a terminal, we use **`jq`** to format and filter the data.
+
+#### Practical `jq` Commands for Analysts:
+
+**1. Beautify the JSON output:**
+```bash
+jq . /var/log/suricata/eve.json | less
+```
+
+**2. Extract specific high-value fields:**
+Instead of reading the entire JSON object, you can isolate the timestamp, Flow ID, signature name, and Destination IP.
+```bash
+jq -c '[.timestamp, .flow_id, .alert.signature, .proto, .dest_ip]' /var/log/suricata/eve.json
+```
+
+**3. Correlate events by Flow ID:**
+In cybersecurity, a "network flow" is a sequence of packets sharing the same characteristics (IPs, ports). Suricata assigns a unique `flow_id` to these sequences. If you spot a malicious alert, you can extract its `flow_id` and query the logs to see the entire conversation:
+```bash
+jq -c 'select(.flow_id==1234567890123456)' /var/log/suricata/eve.json
+```
+
+---
+
+## 🛡️ Conclusion
+By combining custom Suricata signatures with the data-parsing power of `jq`, Security Operations Center (SOC) analysts can rapidly sift through massive amounts of network traffic, identify malicious patterns, and correlate anomalous behaviors down to the exact network flow.
