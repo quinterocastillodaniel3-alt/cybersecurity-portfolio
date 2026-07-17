@@ -1,8 +1,8 @@
 # Network Protocol Analyzers: Wireshark vs. tcpdump
 
-![Network Analysis](https://img.shields.io/badge/Network_Analysis-Traffic-blue?style=for-the-badge)
-![Wireshark](https://img.shields.io/badge/Tool-Wireshark-1679A7?style=for-the-badge)
-![tcpdump](https://img.shields.io/badge/Tool-tcpdump-black?style=for-the-badge)
+[![Network Analysis](https://img.shields.io/badge/Network_Analysis-Traffic-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Packet_analyzer)
+[![Wireshark](https://img.shields.io/badge/Tool-Wireshark-1679A7?style=for-the-badge)](https://www.wireshark.org/)
+[![tcpdump](https://img.shields.io/badge/Tool-tcpdump-black?style=for-the-badge)](https://www.tcpdump.org/)
 
 ## 📌 Project Description
 As a Cybersecurity Analyst, selecting the right tool for the right environment is critical during an incident investigation. In this project, I conducted a comparative analysis of two of the most widely used network protocol analyzers (packet sniffers) in the industry: **Wireshark** and **tcpdump**. The objective of this research is to outline their core functionalities, identify their similarities, and define the specific operational scenarios where one tool is preferred over the other.
