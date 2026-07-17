@@ -1,7 +1,13 @@
-# Cybersecurity Risk Assessment & Registry - Commercial Banking Audit
+# Risk Assessment Matrix & Threat Registry - Commercial Banking Audit
+
+[![Risk Management](https://img.shields.io/badge/Framework-NIST_SP_800--30-blue?style=for-the-badge)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf)
+[![Compliance](https://img.shields.io/badge/Domain-Financial_Compliance-darkgreen?style=for-the-badge)](https://www.ffiec.gov/cybersecurity.htm)
+[![Threat Analysis](https://img.shields.io/badge/Security-Threat_Modeling-red?style=for-the-badge)](https://www.cisa.gov/topics/cyber-threats-and-advisories)
 
 ## 📌 Project Description
-Risk assessments are foundational to establishing an adaptive security posture aligned with the **NIST Cybersecurity Framework (CSF)**. Security teams conduct risk assessments to evaluate whether defensive operations are mature enough to prevent cyberattacks, enforce data integrity, and shield fiscal assets. In this project, I simulated a comprehensive risk assessment for a coastal commercial bank serving 2,200 local accounts and operating under strict Federal Reserve capital regulations. I developed a centralized **Risk Register** to evaluate five structural threats against the organization, scoring their individual Likelihood and Impact to mathematically prioritize administrative and technical remediation vectors.
+Risk assessments are foundational to establishing an adaptive security posture aligned with the **NIST Cybersecurity Framework (CSF)**. Security teams conduct risk assessments to evaluate whether defensive operations are mature enough to prevent cyberattacks, enforce data integrity, and shield fiscal assets. 
+
+In this project, I simulated a comprehensive risk assessment for a coastal commercial bank serving 2,200 local accounts and operating under strict Federal Reserve capital regulations. I developed a centralized **Risk Register** to evaluate five structural threats against the organization, scoring their individual Likelihood and Impact to mathematically prioritize administrative and technical remediation vectors.
 
 ---
 
@@ -16,7 +22,8 @@ Security events manifest when systemic vulnerabilities intersect with opportunis
 ## 📊 Qualitative Risk Assessment Matrix
 
 The risk priority score is calculated using the standard qualitative risk formula:
-$$\text{Likelihood (1-3)} \times \text{Impact/Severity (1-3)} = \text{Risk Priority Score (1-9)}$$
+
+> **Likelihood (1-3) × Impact/Severity (1-3) = Total Risk Priority Score (1-9)**
 
 ### Risk Register
 
@@ -25,8 +32,8 @@ $$\text{Likelihood (1-3)} \times \text{Impact/Severity (1-3)} = \text{Risk Prior
 | **Business Email Compromise (BEC)** | Targeted spear-phishing campaigns leveraging spoofed executive identities to trick internal accounting personnel into authorizing fraudulent wire transfers. | **3** | **2** | **6** | 🟠 **High** |
 | **Compromised User Database** | External threat actors brute-forcing or exploiting web application vulnerabilities to extract hashed passwords and credentials of the 2,200 clients. | **2** | **3** | **6** | 🟠 **High** |
 | **Financial Records Data Leak** | Accidental internal data exfiltration or privilege misuse leading to the public exposure of the 200 commercial entities' banking history. | **2** | **3** | **6** | 🟠 **High** |
-| **Physical Bank Robbery** | Armed entry or physical theft of vault assets during operational hours by a malicious threat group. | **1** | **2** | **2** | 🟢 **Low** |
 | **Supply Chain Attack** | Cyberattack on the primary external clearing house or clearing vendor, or environmental disruption (hurricanes) halting asset deliveries. | **2** | **2** | **4** | 🟡 **Medium** |
+| **Physical Bank Robbery** | Armed entry or physical theft of vault assets during operational hours by a malicious threat group. | **1** | **2** | **2** | 🟢 **Low** |
 
 ---
 
@@ -49,11 +56,13 @@ $$\text{Likelihood (1-3)} \times \text{Impact/Severity (1-3)} = \text{Risk Prior
 ## 🎯 Security Strategic Remediation Roadmap
 Based on the quantitative risk scores calculated in the matrix, security resource allocation will be prioritized into three immediate tiers:
 
-1. **Immediate Focus (Score 6 - BEC & Database Protection):** Implementation of Mandatory Multi-Factor Authentication (MFA) across all corporate endpoints, role-based access controls (RBAC) on the customer database, and continuous automated phishing simulation exercises for remote and local personnel.
+1. **Immediate Focus (Score 6 - BEC & Database Protection):** Implementation of Mandatory Multi-Factor Authentication (MFA) across all corporate endpoints, Role-Based Access Controls (RBAC) on the customer database, and continuous automated phishing simulation exercises for remote and local personnel.
 2. **Secondary Focus (Score 4 - Supply Chain Hardening):** Developing secondary redundant communication channels and establishing off-site backup power grids to maintain liquidity workflows during localized coastal environmental incidents.
 3. **De-prioritized (Score 2 - Physical Burglary):** Maintaining baseline automated infrastructure monitoring and local police coordination, avoiding further immediate capital expenditures in this vector.
 
 ---
 
-## 📝 Summary
-By conducting this formal risk assessment, I evaluated the bank’s specific threat vectors against its operational, geographical, and regulatory constraints. Leveraging a standardized Risk Register allowed the cybersecurity team to move from ambiguous security fears to a quantified, prioritizable mitigation roadmap. Restricting high-impact exposures (such as financial data leaks) and high-likelihood vectors (such as BEC) safeguards business continuity, preserves client trust, and ensures the enterprise maintains strict adherence to federal monetary regulations.
+## 📝 Summary & Business Impact
+By conducting this formal risk assessment, I evaluated the bank’s specific threat vectors against its operational, geographical, and regulatory constraints. Leveraging a standardized Risk Register allowed the cybersecurity team to move from ambiguous security fears to a quantified, prioritizable mitigation roadmap. 
+
+Restricting high-impact exposures (such as financial data leaks) and high-likelihood vectors (such as BEC) safeguards business continuity, preserves client trust, and ensures the enterprise maintains strict adherence to federal monetary regulations.
