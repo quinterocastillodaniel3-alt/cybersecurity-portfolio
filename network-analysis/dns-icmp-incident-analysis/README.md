@@ -1,8 +1,8 @@
 # IT/OT Home Lab Network Asset Management & Risk Classification
 
-[![Asset Management](https://img.shields.io/badge/Domain-Asset_Management-blue?style=for-the-badge)](https://www.cisa.gov/cybersecurity-directives)
+[![Asset Management](https://img.shields.io/badge/Domain-Asset_Management-blue?style=for-the-badge)](https://www.cisa.gov/topics/cyber-threats-and-advisories)
 [![Risk Assessment](https://img.shields.io/badge/Security-Risk_Assessment-darkred?style=for-the-badge)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-30r1.pdf)
-[![IoT Security](https://img.shields.io/badge/Focus-IoT_%26_OT_Security-darkgreen?style=for-the-badge)](https://www.nist.gov/itl/applied-cybersecurity/iot-device-cybersecurity-requirement-catalogs)
+[![IoT Security](https://img.shields.io/badge/Focus-IoT_%26_OT_Security-darkgreen?style=for-the-badge)](https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program)
 
 ## 📌 Project Description
 Asset management is a critical pillar of any organizational security framework; you cannot defend resources that are invisible to network administrators. 
