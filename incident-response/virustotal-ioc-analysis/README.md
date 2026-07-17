@@ -1,8 +1,8 @@
 # Malware Analysis & IoC Extraction using VirusTotal
 
-![Threat Intelligence](https://img.shields.io/badge/Threat_Intelligence-OSINT-purple?style=for-the-badge)
-![Malware Analysis](https://img.shields.io/badge/Malware_Analysis-VirusTotal-blue?style=for-the-badge)
-![Pyramid of Pain](https://img.shields.io/badge/Framework-Pyramid_of_Pain-red?style=for-the-badge)
+[![Threat Intelligence](https://img.shields.io/badge/Threat_Intelligence-OSINT-purple?style=for-the-badge)](https://en.wikipedia.org/wiki/Cyber_threat_intelligence)
+[![Malware Analysis](https://img.shields.io/badge/Malware_Analysis-VirusTotal-blue?style=for-the-badge)](https://www.virustotal.com/)
+[![Pyramid of Pain](https://img.shields.io/badge/Framework-Pyramid_of_Pain-red?style=for-the-badge)](https://www.sans.org/tools/the-pyramid-of-pain/)
 
 ## 📌 Project Description
 In this incident response simulation, I acted as a Tier 1 SOC Analyst investigating an alert regarding a suspicious file downloaded by an employee. The employee was targeted by a spear-phishing email containing a password-protected spreadsheet, which bypassed initial email filters. Upon execution, malicious payloads were dropped onto the host. 
