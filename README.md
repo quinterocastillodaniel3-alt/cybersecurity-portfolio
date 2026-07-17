@@ -1,46 +1,68 @@
 # Hi there, I'm Daniel Quintero Castillo 👋
 
+[![Location](https://img.shields.io/badge/Location-Medell%C3%ADn%2C_Colombia-success?style=for-the-badge&logo=google-maps)](#)
+[![Education](https://img.shields.io/badge/Degree-Mechatronics_Engineering-blue?style=for-the-badge&logo=prometric)](#)
+[![Focus](https://img.shields.io/badge/Focus-Cybersecurity_%26_IT%2FOT-darkred?style=for-the-badge&logo=shield)](#)
+
 Welcome to my Cybersecurity Portfolio. 
 
-I am a Mechatronics Engineer (graduating next month) based in Medellín, Colombia, currently a candidate for a Master's degree in Information Security. This repository documents my learning process, practical labs, incident responses, and security-related practices. I blend my background in hardware prototyping and embedded systems with a strong focus on defending and analyzing networks.
+I am a **Mechatronics Engineer** based in Medellín, Colombia, with a specialized **Diploma in the Internet of Things (IoT)**, and currently an applicant for a **Master's degree in Information Security**. 
+
+My unique background allows me to bridge the critical gap between Information Technology (IT) and Operational Technology (OT). This repository documents my hands-on labs, incident response workflows, and security audits. I blend my deep understanding of hardware prototyping, embedded systems, and industrial automation with a relentless focus on network defense, threat hunting, and infrastructure hardening.
+
+---
 
 ## 🎯 Professional Statement
+I value continuous learning, analytical problem-solving, and the development of reliable defense mechanisms. My goal is to contribute to the security and resilience of modern technological ecosystems—protecting both digital data and physical manufacturing hardware—through continuous monitoring, risk analysis, and robust Information Security practices.
 
-I value continuous learning, analytical problem-solving, and the development of reliable technological solutions using tools such as Python and Linux. My goal is to contribute to the security and reliability of technological systems through monitoring, risk analysis, and robust information protection practices.
+---
 
 ## 🎓 Education & Certifications
-
-* **Master's Degree in Information Security** - Candidate
-* **B.S. Mechatronics Engineering** - Graduating next month
+* **Master's Degree in Information Security** *(Candidate / Applicant)*
+* **B.S. Mechatronics Engineering** *(Instituto Tecnológico Metropolitano - ITM)*
 * **Diploma in Internet of Things (IoT)**
 
-## 📁 Portfolio Structure
+---
 
-This repository is continuously evolving as I develop new skills and complete cybersecurity projects:
+## 📁 Portfolio Directory Structure
+This repository is continuously evolving. Below is the active directory of my cybersecurity projects, mapping directly to the folders in this repository:
 
-* **`/incident-response/`**: Application of the NIST Cybersecurity Framework (CSF) to detect, contain, and recover from network compromises (e.g., DoS attacks).
-* **`/security-audits/`**: Strategic risk assessments, vulnerability management, and network hardening implementations.
-* **`/network-analysis/`**: Packet capture analysis and traffic inspection using Wireshark and `tcpdump` (e.g., SYN Flood attacks, Malware redirection).
-* **`/python-security/`**: Scripts and tools focused on automation and security.
-* **`/linux-notes/`**: Administration, command-line interface (CLI) practices, and system configuration.
-* **`/professional-statement/`**: Detailed documentation of my professional background.
-* **`/screenshots/`**: Visual evidence and documentation for practical labs.
+* 🛡️ **`/incident-response/`**: Application of the NIST Cybersecurity Framework (CSF) to detect, contain, and recover from network compromises and malware infections.
+* 🐧 **`/linux-notes/`**: Administration, command-line interface (CLI) mastery, Identity and Access Management (IAM), and system configuration.
+* 🌐 **`/network-analysis/`**: Deep packet inspection, traffic analysis, and IDS monitoring using Wireshark, `tcpdump`, and Suricata.
+* 📄 **`/professional-statement/`**: Detailed documentation of my professional background, engineering projects, and career objectives.
+* 🐍 **`/python-security/`**: Scripts and automation tools focused on security workflows, log parsing, and network analysis.
+* 📋 **`/security-audits/`**: Strategic risk assessments (NIST SP 800-30), vulnerability management, threat modeling (PASTA), and database hardening.
+* 📚 **`/study-guides/`**: Consolidated notes, cheat sheets, and documentation for cybersecurity certifications and continuous learning.
+* 🪟 **`/windows-endpoint-hardening/`**: System administration, registry configurations, active directory concepts, and endpoint defense strategies.
 
-## 🛠️ Core Skills & Tools
+---
 
-* **Cybersecurity:** Network Traffic Analysis, Risk Assessment, Incident Response (NIST CSF), IoT Security.
-* **Security Tools:** Wireshark, `tcpdump`, Linux CLI.
-* **Engineering & Hardware:** Raspberry Pi 4, Arduino, Embedded Systems, Internet of Things (IoT), Applied AI (Machine Learning), Autodesk Inventor.
-* **Programming & Automation:** Python, Bash.
+## 🛠️ Core Skills & Technologies
+
+### 🔐 Cybersecurity & Networking
+* **Methodologies:** Incident Response (NIST CSF), Risk Assessment (NIST SP 800-30), Threat Modeling (PASTA), IT/OT Convergence Security.
+* **Tools:** Wireshark, `tcpdump`, Suricata IDS, SIEM concepts, Linux CLI.
+* **Domains:** Network Traffic Analysis, Vulnerability Management, IAM (Principle of Least Privilege), SQL Injection Prevention.
+
+### ⚙️ Engineering & Hardware (OT/IoT)
+* **Hardware:** Raspberry Pi 4, Arduino Uno, NEMA17 Motors, Proximity/Ultrasonic Sensors.
+* **Prototyping:** 3D Printing (Single Filament), Diode Laser Cutting (40x42cm).
+* **Applied AI & Design:** Machine Learning for Artificial Vision, Autodesk Inventor (3D Modeling & Mechanical Design).
+
+### 💻 Programming & Automation
+* **Languages:** Python, Bash, SQL.
+
+---
 
 ## 🚀 Current Goals
+* Successfully transition into and complete my Master's degree in Information Security.
+* Strengthen offensive and defensive networking skills, specifically securing vulnerable IoT/OT environments and manufacturing endpoints.
+* Develop custom security-focused Python automation tools.
+* Build and document practical projects that blend Linux administration, embedded systems (Raspberry Pi/Arduino), and security protocols.
 
-* Successfully transition into my Master's degree in Information Security.
-* Strengthen offensive and defensive networking skills, specifically in IoT environments.
-* Develop security-focused Python tools.
-* Build practical projects blending Linux, embedded systems, and security protocols.
-* Expand this professional technical portfolio with real-world scenarios.
+---
 
 ## 📫 Let's Connect
-
-* **Email:** [quinterocastillodaniel3@gmail.com]
+* **Email:** quinterocastillodaniel3@gmail.com
+* **LinkedIn:** [https://www.linkedin.com/in/daniel-quintero-castillo-4090a4399/]
