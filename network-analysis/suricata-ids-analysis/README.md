@@ -1,8 +1,8 @@
 # Practical Guide: Intrusion Detection & Log Analysis with Suricata
 
-![Network Security](https://img.shields.io/badge/Network_Security-IDS-blue?style=for-the-badge)
-![Suricata](https://img.shields.io/badge/Tool-Suricata-red?style=for-the-badge)
-![JSON Parsing](https://img.shields.io/badge/JSON_Parsing-jq-darkgreen?style=for-the-badge)
+[![Network Security](https://img.shields.io/badge/Network_Security-IDS-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Intrusion_detection_system)
+[![Suricata](https://img.shields.io/badge/Tool-Suricata-red?style=for-the-badge)](https://suricata.io/)
+[![JSON Parsing](https://img.shields.io/badge/JSON_Parsing-jq-darkgreen?style=for-the-badge)](https://jqlang.github.io/jq/)
 
 ## 📌 Overview
 Welcome to this practical guide on network traffic analysis using **Suricata**, an open-source Intrusion Detection System (IDS). This repository serves as a hands-on reference for security analysts and threat hunters who want to learn how to:
