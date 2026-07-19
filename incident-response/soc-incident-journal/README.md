@@ -1,8 +1,8 @@
 # Incident Handler's Journal & Analysis Log
 
-![Incident Response](https://img.shields.io/badge/Incident_Response-NIST_Framework-blue?style=for-the-badge)
-![Network Analysis](https://img.shields.io/badge/Network_Analysis-Wireshark-darkgreen?style=for-the-badge)
-![SIEM](https://img.shields.io/badge/SIEM-Wazuh-red?style=for-the-badge)
+[![Location](https://img.shields.io/badge/Location-Medell%C3%ADn%2C_Colombia-success?style=for-the-badge&logo=google-maps)](#) [![Education](https://img.shields.io/badge/Degree-Mechatronics_Engineering-blue?style=for-the-badge&logo=prometric)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/daniel-quintero-castillo-4090a4399/)
+
+![Incident Response](https://img.shields.io/badge/Incident_Response-NIST_Framework-blue?style=for-the-badge) ![Network Analysis](https://img.shields.io/badge/Network_Analysis-Wireshark-darkgreen?style=for-the-badge) ![SIEM](https://img.shields.io/badge/SIEM-Wazuh-red?style=for-the-badge)
 
 ## 📌 Project Description
 In this project, I developed and maintained an Incident Handler's Journal to document security investigations, network analysis, and the deployment of cybersecurity tools. The primary objective was to track anomalous events by applying the phases of the **NIST Incident Response Life Cycle** and document findings in a structured manner for technical and SOC operations teams.
