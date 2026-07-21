@@ -5,15 +5,20 @@
 [![Python](https://img.shields.io/badge/Python-Security-blue?style=for-the-badge&logo=python)](https://www.python.org/) [![SecOps](https://img.shields.io/badge/SecOps-Automation-darkgreen?style=for-the-badge)](https://www.cisa.gov/cybersecurity)
 
 ## 📌 Repository Overview
-This repository contains a comprehensive collection of Python scripts, algorithms, and technical labs focused on security automation. The projects demonstrate the ability to programmatically handle files, parse complex security logs, automate identity and access management (IAM) tasks, and utilize regular expressions for threat detection.
+This repository contains a comprehensive collection of Python scripts, algorithms, and technical labs focused on security automation. The projects range from foundational data manipulation to real-world applied security tools, demonstrating the ability to parse complex security logs, automate identity and access management (IAM) tasks, and interact with network sockets and APIs for threat detection.
 
 ---
 
 ## 📂 Table of Contents & Projects
 
+### 🚀 Applied Security & Threat Hunting (Real-World Applications)
+*   **[Automated Threat Intel API Analyzer](./python-ioc-api-analyzer):** Integrating with external APIs (like VirusTotal) using the `requests` module and parsing JSON to automate IoC triage.
+*   **[File Integrity Monitor (FIM)](./python-file-integrity-monitor):** Using cryptographic hashing (`hashlib` / SHA-256) to establish file baselines and detect unauthorized data modifications.
+*   **[Custom Network Port Scanner](./python-network-port-scanner):** Utilizing the `socket` module to conduct lightweight network reconnaissance and identify open TCP ports on target systems.
+
 ### 🛠️ File Handling & Automation
 *   **[Python Automation & File Handling](./Python-Automation-and-File-Handling):** Foundational concepts of using Python to automate security tasks and triage incidents by parsing logs.
-*   **[Importing & Parsing Text Files](./import-parse-text-files) / [Python File Parsing](./python-file-parsing):** Handling file operations (`with open`), extracting string data, appending logs, and dynamically writing approved IP lists.
+*   **[Importing & Parsing Text Files](./import-parse-text-files):** Handling file operations (`with open`), extracting string data, appending logs, and dynamically writing approved IP lists.
 *   **[Algorithm for File Updates](./python-algorithm-file-updates):** A complete algorithmic solution to automate identity and access control by updating IP allow/remove lists programmatically.
 
 ### 🧠 Logic, Loops & Control Flow
@@ -28,6 +33,6 @@ This repository contains a comprehensive collection of Python scripts, algorithm
 *   **[Python Regular Expressions (RegEx)](./python-regular-expressions):** Utilizing the `re` module (`re.findall()`) to extract valid IPv4 addresses and parse complex, unstructured security logs for threat hunting.
 
 ### 🐛 Debugging & Fundamentals
-*   **[Debugging Python Code](./debugging-python-code) / [Python Debugging Logs](./python-debugging-logs):** Identifying and resolving syntax errors, logic errors, and exceptions in automated security scripts to ensure smooth execution.
+*   **[Debugging Python Code](./debugging-python-code):** Identifying and resolving syntax errors, logic errors, and exceptions in automated security scripts to ensure smooth execution.
 *   **[Python Variables Lab](./python-variables-lab):** Assigning and managing various data types (strings, integers, booleans, lists) to track security-related information.
 *   **[Python Writing Code Lab](./python-writing-code-lab):** Fundamentals of Python syntax, standard code commenting, and utilizing notebook environments for security operations.
